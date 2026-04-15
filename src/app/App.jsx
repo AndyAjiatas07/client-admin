@@ -1,6 +1,6 @@
-import { AppRoutes } from "./router/AppRoutes"
-import { Toaster } from "react-hot-toast"
- 
+import { AppRoutes } from "./router/AppRoutes";
+import { Toaster } from "react-hot-toast";
+
 function App() {
   return (
     <>
@@ -12,13 +12,13 @@ function App() {
             fontWeight: 600,
             fontSize: "1rem",
             borderRadius: "8px",
-          }
+          },
         }}
       />
+
       <AppRoutes />
     </>
   );
 }
- 
-export default App
- 
+
+export default App;

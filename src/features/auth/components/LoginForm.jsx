@@ -1,69 +1,46 @@
-// src/components/LoginForm.jsx
-const LoginForm = ({ onForgotPassword, onSwitchToRegister }) => {
+export const LoginForm = ({ onForgot }) => {
     return (
-        <>
-            <form className="space-y-5">
-                {/* Email/usuario */}
-                <div>
-                    <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-800 mb-1.5"
-                    >
-                        Email o usuario
-                    </label>
-                    <input
-                        id="email"
-                        type="text"
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
+        <form className="space-y-5">
+            {/* Sección de de email o usuario */}
+            <div>
+                <label className="block text-sm font-medium text-gray-800 mb-1.5">
+                    Email o Usuario
+                </label>
+                <input
+                    type="text"
+                    placeholder="correo@ejemplo.com o usuario"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+            </div>
 
-                {/* Contraseña */}
-                <div>
-                    <label
-                        htmlFor="password"
-                        className="block text-sm font-medium text-gray-800 mb-1.5"
-                    >
-                        Contraseña
-                    </label>
-                    <input
-                        id="password"
-                        type="password"
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
+            {/* Sección de de contraseña */}
+            <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Contraseña
+                </label>
+                <input
+                    type="password"
+                    placeholder="••••••••"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+            </div>
 
-                {/* Botón login */}
-                <button
-                    type="submit"
-                    className="w-full bg-main-blue hover:opacity-95 text-white font-medium py-2.5 px-4 rounded-lg text-sm"
-                >
-                    Iniciar sesión
-                </button>
-            </form>
+            <button
+                type="submit"
+                className="w-full bg-main-blue hover:opacity-90 text-white font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 text-sm"
+            >
+                Iniciar Sesión
+            </button>
 
-            <p className="text-center text-sm mt-4 flex flex-col gap-2">
+            <p className="text-center text-sm">
                 <button
                     type="button"
-                    onClick={onForgotPassword}
+                    onClick={onForgot}
                     className="text-main-blue hover:underline"
                 >
-                    ¿Olvidaste tu contraseña?
+                ¿Olvidaste tu contraseña?
                 </button>
-
-                <span>
-                    ¿No tienes cuenta?{" "}
-                    <button
-                        type="button"
-                        onClick={onSwitchToRegister}
-                        className="text-main-blue hover:underline"
-                    >
-                        Regístrate
-                    </button>
-                </span>
             </p>
-        </>
+        </form>
     );
 };
-
-export default LoginForm;
