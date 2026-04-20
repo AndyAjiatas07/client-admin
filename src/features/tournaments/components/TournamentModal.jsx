@@ -1,5 +1,5 @@
 export const TournamentModal = ({ isOpen }) => {
-    
+    if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 px-3 sm:px-4">
@@ -10,6 +10,7 @@ export const TournamentModal = ({ isOpen }) => {
                     className="p-4 sm:p-5 text-white sticky top-0 z-10"
                     style={{
                         background:
+
                             "linear-gradient(90deg, var(--main-blue) 0%, #1956a3 100%)",
                     }}
                 >

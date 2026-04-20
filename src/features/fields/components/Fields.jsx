@@ -1,4 +1,10 @@
+import { useState } from "react"; // Primero importa useState
+import { FieldModal } from "./FieldModal.jsx"; // Luego importa FieldModal
+
+
 export const Fields = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false); // Coloca dentro del componente
+
     return (
         <div className="p-4">
             {/* HEADER */}
@@ -12,17 +18,23 @@ export const Fields = () => {
                     </p>
                 </div>
 
-                <button className="bg-main-blue px-4 py-2 rounded text-white hover:opacity-90 transition">
+                <button 
+                    onClick={() => setIsModalOpen(true)} 
+                    className="bg-main-blue px-4 py-2 rounded text-white hover:opacity-90 transition"
+                >
                     + Agregar Campo
                 </button>
             </div>
+            
+            <FieldModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            /> 
 
             {/* GRID */}
             <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-
                 {/* CARD */}
                 <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:scale-[1.02]">
-
                     {/* IMAGEN */}
                     <div className="w-full h-52 bg-gray-100 flex items-center justify-center">
                         <img
@@ -66,7 +78,6 @@ export const Fields = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );

@@ -1,4 +1,6 @@
-export const FieldModal = () => {
+export const FieldModal = ({ isOpen, onClose     }) => {
+    if (!isOpen) return null;
+
     return (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 px-3 sm:px-4">
             {/* CONTENEDOR */}
@@ -120,11 +122,12 @@ export const FieldModal = () => {
 
                     {/* BOTONES */}
                     <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-4 border-t">
-                        <button
-                            className="w-full sm:w-auto px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition"
-                        >
-                            Cancelar
-                        </button>
+                    <button
+                        onClick={onClose} // Moverlo aquí
+                        className="w-full sm:w-auto px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 transition"
+                    >
+                        Cancelar
+                    </button>
 
                         <button
                             className="w-full sm:w-auto px-5 py-2 rounded-lg text-white font-medium transition shadow"

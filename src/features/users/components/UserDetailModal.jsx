@@ -1,7 +1,7 @@
 //import defaultAvatarImg from "../../../assets/img/avatarDefault-1749508519496.png";
 
 export const UserDetailModal = ({ isOpen, userrrrr }) => {
-    //if (!isOpen || !user) return null;
+    if (!isOpen || !user) return null;
 
     //const avatarSrc = user?.profilePicture || defaultAvatarImg;
 
