@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Spinner } from "../../auth/components/Spinner";
 import { TeamModal } from "./TeamModal.jsx";
 
 export const Teams = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const loading = false;
 
     if (loading) return <Spinner />;
@@ -19,10 +21,17 @@ export const Teams = () => {
                     </p>
                 </div>
 
-                <button className="bg-main-blue px-4 py-2 rounded text-white hover:opacity-90">
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-main-blue px-4 py-2 rounded text-white hover:opacity-90">
                     + Agregar Equipo
                 </button>
             </div>
+
+            <TeamModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
 
             {/* GRID */}
             <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">

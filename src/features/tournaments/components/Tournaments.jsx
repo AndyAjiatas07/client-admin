@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { TournamentModal } from "./TournamentModal.jsx";
 
 export const Tournaments = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     return (
         <div className="p-4">
             {/* HEADER */}
@@ -14,10 +16,17 @@ export const Tournaments = () => {
                     </p>
                 </div>
 
-                <button className="bg-main-blue px-4 py-2 rounded text-white hover:opacity-90 transition">
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-main-blue px-4 py-2 rounded text-white hover:opacity-90 transition">
                     + Agregar Torneo
                 </button>
             </div>
+
+            <TournamentModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
 
             {/* GRID */}
             <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">

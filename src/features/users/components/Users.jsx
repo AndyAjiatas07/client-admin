@@ -1,4 +1,8 @@
+import { useState } from "react";
+import { CreateUserModal } from "./CreateUserModal.jsx";
+
 export const Users = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const users = []; // 🔹 tú integras datos reales
 
     return (
@@ -12,10 +16,17 @@ export const Users = () => {
                     </p>
                 </div>
 
-                <button className="bg-green-600 px-4 py-2 rounded text-white hover:bg-green-700 transition">
+                <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="bg-green-600 px-4 py-2 rounded text-white hover:bg-green-700 transition">
                     + Agregar Usuario
                 </button>
             </div>
+
+            <CreateUserModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+            />
 
             {/* FILTROS */}
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 mb-4">

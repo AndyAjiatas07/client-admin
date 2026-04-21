@@ -62,8 +62,8 @@ export const Reservations = () => {
 
                                     <span
                                         className={`px-3 py-1 text-xs rounded-full font-medium ${isConfirmed
-                                                ? "bg-green-100 text-green-700"
-                                                : "bg-yellow-100 text-yellow-700"
+                                            ? "bg-green-100 text-green-700"
+                                            : "bg-yellow-100 text-yellow-700"
                                             }`}
                                     >
                                         {reservation.status}
@@ -75,8 +75,8 @@ export const Reservations = () => {
                                     <button
                                         disabled={isConfirmed}
                                         className={`w-full py-2 rounded-lg text-white font-medium transition ${isConfirmed
-                                                ? "bg-gray-400 cursor-not-allowed"
-                                                : "bg-main-blue hover:opacity-90"
+                                            ? "bg-gray-400 cursor-not-allowed"
+                                            : "bg-main-blue hover:opacity-90"
                                             }`}
                                     >
                                         {isConfirmed ? "✔ Confirmada" : "✔ Confirmar"}
