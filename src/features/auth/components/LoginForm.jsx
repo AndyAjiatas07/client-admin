@@ -1,14 +1,15 @@
-import { useAuthStore } from "../store/authStore";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useAuthStore } from '../store/authStore.js';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import toast from "react-hot-toast";
 
 export const LoginForm = ({ onForgot }) => {
+
     const navigate = useNavigate();
 
     const login = useAuthStore((state) => state.login);
     const loading = useAuthStore((state) => state.loading);
-    //const error = useAuthStore((state) => state.error);
+    const error = useAuthStore((state) => state.error);
 
     const {
         register,
@@ -16,19 +17,18 @@ export const LoginForm = ({ onForgot }) => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = async (data) => {
+    const onSumnit = async (data) => {
         const res = await login(data);
-        if (res.success) {
+        if (res) {
             navigate("/dashboard");
             toast.success("Bienvenido de nuevo");
+        } else {
+            toast.error(res.error);
         }
     };
 
     return (
-        <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="space-y-5">
-            {/* Sección de de email o usuario */}
+        <form onSubmit={handleSubmit(onSumnit)} className="space-y-5">
             <div>
                 <label className="block text-sm font-medium text-gray-800 mb-1.5">
                     Email o Usuario
@@ -38,12 +38,11 @@ export const LoginForm = ({ onForgot }) => {
                     placeholder="correo@ejemplo.com o usuario"
                     className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     {...register("emailOrUsername", {
-                        required: "Este campo es requerido",
+                        required: "Email o usuario es obligatorio"
                     })}
                 />
             </div>
 
-            {/* Sección de de contraseña */}
             <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     Contraseña
@@ -53,7 +52,7 @@ export const LoginForm = ({ onForgot }) => {
                     placeholder="••••••••"
                     className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     {...register("password", {
-                        required: "La contraseña es requerida",
+                        required: "Contraseña es obligatoria"
                     })}
                 />
             </div>
@@ -75,6 +74,6 @@ export const LoginForm = ({ onForgot }) => {
                     ¿Olvidaste tu contraseña?
                 </button>
             </p>
-        </form>
+        </form >
     );
 };

@@ -16,7 +16,7 @@ const axiosAuth = axios.create({
 // ================= NUEVO: axiosAdmin =================
 const axiosAdmin = axios.create({
   baseURL: import.meta.env.VITE_ADMIN_URL,
-  timeout: 8000,
+  timeout: 80000,
 
   headers: {
     "Content-Type": "application/json",
@@ -130,8 +130,6 @@ const handleRefreshToken = async function (_error) {
 
 axiosAuth.interceptors.response.use((res) => res, handleRefreshToken);
 
-//axiosAdmin.interceptors.response.use((res) => res, handleRefreshToken);
-
 // ================= EXPORT AXIOS =================
-export { axiosAuth };
+export {axiosAuth, axiosAdmin};
 export { handleRefreshToken };

@@ -1,32 +1,32 @@
 import { axiosAuth } from './api';
 
 export const login = async (data) => {
-    return await axiosAuth.post("/Auth/login", data);
+    return await axiosAuth.post("/kinalSportsAdmin/v1/Auth/login", data);
 };
 
 export const register = async (data) => {
-    return await axiosAuth.post("/Auth/register", data, {
-        headers: { "Content-Type": "multipart/form-data" } // FIX: headers en minúscula
+    return await axiosAuth.post("/kinalSportsAdmin/v1/Auth/register", data, {
+        headers: { "Content-Type": "multipart/form-data" }
     });
 };
 
 export const forgotPassword = async (email) => {
-    return await axiosAuth.post("/Auth/forgot-password", { email });
+    return await axiosAuth.post("/kinalSportsAdmin/v1/Auth/forgot-password", { email });
 };
 
 export const resetPassword = async (token, newPassword) => {
-    return await axiosAuth.post("/Auth/reset-password", { token, newPassword });
+    return await axiosAuth.post("/kinalSportsAdmin/v1/Auth/reset-password", { token, newPassword });
 };
 
 export const verifyEmail = async (token) => {
-    return await axiosAuth.post("/Auth/verify-email", { token });
+    return await axiosAuth.post("/kinalSportsAdmin/v1/Auth/verify-email", { token });
 };
 
 export const updateUserRole = async (userId, roleName) => {
-    return await axiosAuth.put(`/users/${userId}/role`, { roleName });
+    return await axiosAuth.put(`/kinalSportsAdmin/v1/users/${userId}/role`, { roleName });
 };
 
 export const getAllUsers = async () => {
-    const { data } = await axiosAuth.get("/Auth/users");
+    const { data } = await axiosAuth.get("/kinalSportsAdmin/v1/Auth/users");
     return { users: data };
 };
