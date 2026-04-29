@@ -1,9 +1,22 @@
-import { useState } from "react"; // Primero importa useState
-import { FieldModal } from "./FieldModal.jsx"; // Luego importa FieldModal
-
+import { useState, useEffect } from "react";
+import { useEffect as useToastEffect } from "react";
+import { useFieldsStore } from "../../users/store/adminStore";
+import { useUIStore } from "../../auth/store/uiStore";
+import { showError } from "../../../shared/utils/toast"
+import { Spinner } from "@material-tailwind/react";
+import { FieldModal } from "./FieldModal.jsx";
 
 export const Fields = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false); // Coloca dentro del componente
+    useUIStore
+    const { fields, loading, error, getFields } = useFieldsStore();
+    const { openConfirm } = useUIStore();
+
+    const [openModal, setOpenModal] = useState(false);
+    const [selectField, setSelectedField] = useState(null);
+
+    useEffect(() => {
+        getFields();
+    }, [getFields]);
 
     return (
         <div className="p-4">
@@ -18,18 +31,18 @@ export const Fields = () => {
                     </p>
                 </div>
 
-                <button 
-                    onClick={() => setIsModalOpen(true)} 
+                <button
+                    onClick={() => setIsModalOpen(true)}
                     className="bg-main-blue px-4 py-2 rounded text-white hover:opacity-90 transition"
                 >
                     + Agregar Campo
                 </button>
             </div>
-            
+
             <FieldModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-            /> 
+            />
 
             {/* GRID */}
             <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
