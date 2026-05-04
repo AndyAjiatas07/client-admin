@@ -1,3 +1,15 @@
+import { toast } from "react-hot-toast";
+
+const baseStyle = {
+    borderRadius: "8px",
+    fontweight: 600,
+    fontFamily: "inherit",
+    fontSize: "1rem",
+    padding: "16px 24px",
+    boxShadow: "0 2px 16px 0px rgba(0, 0, 0, 0.8)",
+}
+
+
 export const showSuccess = (message) =>
     toast.success(message, {
         style: {
@@ -39,3 +51,4 @@ export const showInfo = (message) =>
             secondary: "#fff",
         },
     });
+
