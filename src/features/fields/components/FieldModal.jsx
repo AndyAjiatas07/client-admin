@@ -54,6 +54,7 @@ export const FieldModal = ({ isOpen, onClose, field }) => {
 
     const onSubmit = async (data) => {
         console.log("Datos recibidos en onSubmit:", data);  // Verifica si data está siendo recibido correctamente
+        console.log("PHOTO:", field?.photo);
         try {
             await saveField(data, field?._id);
             showSuccess(

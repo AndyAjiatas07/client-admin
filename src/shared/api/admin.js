@@ -23,6 +23,7 @@ export const getTeams = async () => {
 };
 
 export const createTeam = async (data) => {
+    p
     return await axiosAdmin.post("/teams", data, {
         headers: { "Content-Type": "multipart/form-data" },
     });
@@ -44,22 +45,14 @@ export const getFields = async () => {
 };
 
 export const createField = async (data) => {
-    const token = localStorage.getItem("token"); // o tu state de auth
     return await axiosAdmin.post("/fields", data, {
-        headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`, // <--- esto faltaba
-        },
+        headers: { "Content-Type": "multipart/form-data" },
     });
 };
 
 export const updateField = async (id, data) => {
-    const token = localStorage.getItem("token");
     return await axiosAdmin.put(`/fields/${id}`, data, {
-        headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-        },
+        headers: { "Content-Type": "multipart/form-data" },
     });
 };
 
