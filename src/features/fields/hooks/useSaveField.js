@@ -12,8 +12,8 @@ export const useSaveField = () => {
         formData.append("fieldType", data.fieldType)
         formData.append("pricePerHour", data.pricePerHour)
 
-        if (data.photo?.length > 0) {
-            formData.append("photo", data.photo[0]);
+        if (data.image?.length > 0) {
+            formData.append("image", data.image[0]);
         }
         if (fieldId) {
             await updateField(fieldId, formData);

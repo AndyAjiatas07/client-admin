@@ -63,7 +63,7 @@ export const Fields = () => {
                         {/* IMAGEN */}
                         <div className="w-full h-52 bg-gray-100 flex items-center justify-center">
                             <img
-                                src={field.photo}
+                                src={field.image}
                                 alt={field.fieldName}
                                 className="max-h-full max-w-full object-contain rounded-t-xl"
                             />

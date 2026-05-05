@@ -28,7 +28,7 @@ export const FieldModal = ({ isOpen, onClose, field }) => {
                     pricePerHour: field.pricePerHour,
                     description: field.description,
                 });
-                setPreview(field.photo);
+                setPreview(field.image);
             } else {
                 reset({
                     fieldName: "",
@@ -36,7 +36,7 @@ export const FieldModal = ({ isOpen, onClose, field }) => {
                     capacity: "",
                     pricePerHour: "",
                     description: "",
-                    photo: null,
+                    image: null,
                 });
                 setPreview(null);
             }
@@ -45,26 +45,25 @@ export const FieldModal = ({ isOpen, onClose, field }) => {
 
     useEffect(() => {
         const subscription = watch((value, { name }) => {
-            if (name === "photo" && value.photo && value.photo.length > 0) {
-                setPreview(URL.createObjectURL(value.photo[0]));
+            if (name === "image" && value.image && value.image.length > 0) {
+                setPreview(URL.createObjectURL(value.image[0]));
             }
         });
         return () => subscription.unsubscribe();
     }, [watch]);
 
     const onSubmit = async (data) => {
-        console.log("Datos recibidos en onSubmit:", data);  // Verifica si data está siendo recibido correctamente
-        console.log("PHOTO:", field?.photo);
         try {
             await saveField(data, field?._id);
             showSuccess(
-                field ? "Campo actualizado correctamente" : "Campo creado correctamente"
+                field
+                    ? "Campo actualizado correctamente"
+                    : "Campo creado correctamente",
             );
             reset();
             setPreview(null);
             onClose();
-        } catch (error) {
-            console.log("Error en onSubmit:", error); // Log del error
+        } catch {
             showError("Error al guardar el campo");
         }
     };
@@ -232,9 +231,9 @@ export const FieldModal = ({ isOpen, onClose, field }) => {
                             <input
                                 type="file"
                                 className="w-full px-3 py-2 rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 
-                hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition cursor-pointer"
+                                hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200 transition cursor-pointer"
                                 accept="image/*"
-                                {...register("photo")}
+                                {...register("image")}
                             />
                         </div>
                     </div>
