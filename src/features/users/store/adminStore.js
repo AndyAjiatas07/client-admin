@@ -77,7 +77,7 @@ export const useFieldsStore = create((set, get) => ({
 
       set((state) => ({
         fields: state.fields.map((field) =>
-          field._id === id ? { ...field, ...response.data.data } : field
+          field._id === id ? response.data.data : field
         ),
         loading: false,
       }));

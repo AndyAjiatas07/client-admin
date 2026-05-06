@@ -145,7 +145,7 @@ export const FieldModal = ({ isOpen, onClose, field }) => {
                                     required: "El tipo es obligatorio",
                                 })}
                             >
-                                <option>Seleccione un tipo</option>
+                                <option value="">Seleccione un tipo</option>
                                 <option value="SINTETICA">Sintética</option>
                                 <option value="CONCRETO">Concreto</option>
                                 <option value="NATURAL">Natural</option>
@@ -169,7 +169,7 @@ export const FieldModal = ({ isOpen, onClose, field }) => {
                                     required: "La capacidad es obligatoria",
                                 })}
                             >
-                                <option>Seleccione capacidad</option>
+                                <option value="">Seleccione un tipo</option>
                                 <option value="FUTBOL_5">Fútbol 5</option>
                                 <option value="FUTBOL_7">Fútbol 7</option>
                                 <option value="FUTBOL_11">Fútbol 11</option>
